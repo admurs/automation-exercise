@@ -35,7 +35,6 @@ public class RegisterUserElements {
     public WebElement checkBox1;
     @FindBy(id = "optin")
     public WebElement checkBox2;
-
     @FindBy(xpath = "//input[@data-qa='first_name']")
     public WebElement firstNameText;
     @FindBy(xpath = "//input[@data-qa='last_name']")
@@ -70,7 +69,4 @@ public class RegisterUserElements {
     public WebElement deleteAccountVerifyText;
     @FindBy(xpath = " //a[@data-qa='continue-button']")
     public WebElement deleteContinueButton;
-
-
-
 }

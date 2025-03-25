@@ -71,7 +71,6 @@ public class RegisterUserPage_DS extends PageBase {
         return userData;
     }
 
-
     public void submitAccountCreation() {
         clickElement(registerUserElements.createAccountButton);
 
