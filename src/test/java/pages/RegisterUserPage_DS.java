@@ -67,6 +67,7 @@ public class RegisterUserPage_DS extends PageBase {
         sendKeyToElement(registerUserElements.cityText, userData.get("city"));
         sendKeyToElement(registerUserElements.zipcodeText, userData.get("zipCode"));
         sendKeyToElement(registerUserElements.mobileNumberText, userData.get("mobile"));
+        scrollTo(registerUserElements.createAccountButton);
 
         return userData;
     }

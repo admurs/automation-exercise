@@ -69,4 +69,5 @@ public class RegisterUserElements {
     public WebElement deleteAccountVerifyText;
     @FindBy(xpath = " //a[@data-qa='continue-button']")
     public WebElement deleteContinueButton;
+
 }

@@ -3,19 +3,17 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.RegisterUserPage_DS;
 import utility.ConfigReader;
 
 import java.util.Map;
 
 public class RegisterUserTest_DS extends TestBase {
-    RegisterUserPage_DS registerPage = new RegisterUserPage_DS();
+
     Map<String, String> userData;
+    String webSiteUrl = ConfigReader.getProperty("url");
 
-    @Test(groups = {"regression", "smoke"},description = "Test Case 1: Register User")
+    @Test(groups = {"regression", "smoke"}, description = "Test Case 1: Register User")
     public void testCompleteRegistrationFlow() {
-
-        String webSiteUrl = ConfigReader.getProperty("url");
         getAppLibrary().getFlowsLibrary().navigateToUrl(webSiteUrl);
 
         verifyPageTitle();
@@ -27,39 +25,39 @@ public class RegisterUserTest_DS extends TestBase {
     }
 
     private void verifyPageTitle() {
-        Assert.assertEquals(registerPage.getPageTitle(), "Automation Exercise");
+        Assert.assertEquals(getAppLibrary().getPageLibrary().getRegisterUserPage_ds().getPageTitle(), "Automation Exercise");
     }
 
     private void initiateRegistration() {
-        userData = registerPage.startRegistration();
+        userData = getAppLibrary().getPageLibrary().getRegisterUserPage_ds().startRegistration();
 
-        Assert.assertTrue(registerPage.isSignUpFormVisible());
+        Assert.assertTrue(getAppLibrary().getPageLibrary().getRegisterUserPage_ds().isSignUpFormVisible());
     }
 
     private void fillAccountDetails() {
-        userData = registerPage.fillAccountDetails(userData);
+        userData = getAppLibrary().getPageLibrary().getRegisterUserPage_ds().fillAccountDetails(userData);
     }
 
     private void fillAddressAndCreateAccount() {
-        userData = registerPage.fillAddressInformation(userData);
-        registerPage.submitAccountCreation();
+        userData = getAppLibrary().getPageLibrary().getRegisterUserPage_ds().fillAddressInformation(userData);
+        getAppLibrary().getPageLibrary().getRegisterUserPage_ds().submitAccountCreation();
     }
 
     private void verifyAccountCreation() {
 
-        Assert.assertTrue(registerPage.isAccountCreatedVisible());
+        Assert.assertTrue(getAppLibrary().getPageLibrary().getRegisterUserPage_ds().isAccountCreatedVisible());
 
-        registerPage.submitAccountContinue();
+        getAppLibrary().getPageLibrary().getRegisterUserPage_ds().submitAccountContinue();
 
-        Assert.assertEquals(registerPage.getLoggedInUsername(), userData.get("name"));
+        Assert.assertEquals(getAppLibrary().getPageLibrary().getRegisterUserPage_ds().getLoggedInUsername(), userData.get("name"));
     }
 
     private void completeRegistrationAndVerify() {
-        registerPage.completeRegistration();
+        getAppLibrary().getPageLibrary().getRegisterUserPage_ds().completeRegistration();
 
-        Assert.assertTrue(registerPage.isAccountDeletedVisible());
+        Assert.assertTrue(getAppLibrary().getPageLibrary().getRegisterUserPage_ds().isAccountDeletedVisible());
 
-        registerPage.completeRegistrationContinue();
+        getAppLibrary().getPageLibrary().getRegisterUserPage_ds().completeRegistrationContinue();
     }
 
 
