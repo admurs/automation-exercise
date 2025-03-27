@@ -32,7 +32,7 @@ public class Driver {
 
     private static void initializeDriver() {
         // Load environment-specific properties
-        String environment = System.getProperty("env", "QA"); // Default to "qa" if not specified
+       String environment = System.getProperty("env", "QA"); // Default to "qa" if not specified
         System.out.println("environment = " + environment);
         logger.info("===============================================================");
         logger.info("Environment : {}", environment.toUpperCase());

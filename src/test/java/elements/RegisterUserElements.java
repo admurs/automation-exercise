@@ -8,20 +8,21 @@ import utility.Driver;
 import java.util.List;
 
 public class RegisterUserElements {
-    public RegisterUserElements(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public RegisterUserElements() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
+
     @FindBy(xpath = "//a[@href='/login']")
     public WebElement signUpLoginButton;
     @FindBy(xpath = "//input[@data-qa='signup-name']")
     public WebElement nameText;
     @FindBy(xpath = "//input[@data-qa='signup-email']")
     public WebElement emailText;
-    @FindBy(xpath = "//button[@data-qa='signup-button']" )
+    @FindBy(xpath = "//button[@data-qa='signup-button']")
     public WebElement signUpButton;
-    @FindBy(xpath = "(//h2[@class='title text-center']/b)[1]" )
+    @FindBy(xpath = "(//h2[@class='title text-center']/b)[1]")
     public WebElement signUpVerifyText;
-    @FindBy(xpath = "//div[@class='radio-inline']" )
+    @FindBy(xpath = "//div[@class='radio-inline']")
     public List<WebElement> titleRadioButton;
     @FindBy(xpath = "//input[@data-qa='password']")
     public WebElement accountPasswordText;
@@ -61,7 +62,7 @@ public class RegisterUserElements {
     public WebElement createAccoutVerifyText;
     @FindBy(xpath = "   //a[@data-qa='continue-button']")
     public WebElement continueButton;
-    @FindBy(xpath = "   //li/a/b")
+    @FindBy(xpath = "   //*[contains(text(),'Logged in as')]")
     public WebElement userNameVerifyText;
     @FindBy(xpath = " //a[@href='/delete_account']")
     public WebElement deleteAccountButton;

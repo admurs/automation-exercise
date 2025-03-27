@@ -18,58 +18,49 @@ public class RegisterUserPage_DS extends PageBase {
     }
 
 
-    public Map<String, String> startRegistration() {
-        Map<String, String> userData = new HashMap<>();
+    public void startRegistration() {
         clickElement(registerUserElements.signUpLoginButton);
-        userData.put("name", getFaker().name().name());
-        userData.put("email", getFaker().internet().emailAddress());
-
-
-        sendKeyToElement(registerUserElements.nameText, userData.get("name"));
-        sendKeyToElement(registerUserElements.emailText, userData.get("email"));
+        String email = getFaker().internet().emailAddress();
+        String name = getFaker().name().name();
+        sendKeyToElement(registerUserElements.nameText, name);
+        sendKeyToElement(registerUserElements.emailText, email);
         clickElement(registerUserElements.signUpButton);
-
-        return userData;
     }
 
 
-    public Map<String, String> fillAccountDetails(Map<String, String> userData) {
-        userData.put("password", getFaker().internet().password());
-
+    public void fillAccountDetails() {
         clickElement(titleSelected(registerUserElements.titleRadioButton));
-        sendKeyToElement(registerUserElements.accountPasswordText, userData.get("password"));
+        String password = getFaker().internet().password();
+        sendKeyToElement(registerUserElements.accountPasswordText, password);
         selectBirthDate();
         clickElement(registerUserElements.checkBox1);
         clickElement(registerUserElements.checkBox2);
-
-        return userData;
     }
 
 
-    public Map<String, String> fillAddressInformation(Map<String, String> userData) {
-        userData.put("firstName", getFaker().name().firstName());
-        userData.put("lastName", getFaker().name().lastName());
-        userData.put("company", getFaker().company().name());
-        userData.put("address", getFaker().address().fullAddress());
-        userData.put("address2", getFaker().address().secondaryAddress());
-        userData.put("state", getFaker().address().state());
-        userData.put("city", getFaker().address().city());
-        userData.put("zipCode", getFaker().address().zipCode());
-        userData.put("mobile", getFaker().phoneNumber().cellPhone());
-
-        sendKeyToElement(registerUserElements.firstNameText, userData.get("firstName"));
-        sendKeyToElement(registerUserElements.lastNameText, userData.get("lastName"));
-        sendKeyToElement(registerUserElements.companyNameText, userData.get("company"));
-        sendKeyToElement(registerUserElements.addressText, userData.get("address"));
-        sendKeyToElement(registerUserElements.address2Text, userData.get("address2"));
+    public void fillAddressInformation() {
+        String firstName = getFaker().name().firstName();
+        String lastName = getFaker().name().lastName();
+        String companyName = getFaker().company().name();
+        String address = getFaker().address().fullAddress();
+        String address2 = getFaker().address().secondaryAddress();
+        String state = getFaker().address().state();
+        String city = getFaker().address().city();
+        String zipCode = getFaker().address().zipCode();
+        String mobile = getFaker().phoneNumber().cellPhone();
+        sendKeyToElement(registerUserElements.firstNameText, firstName);
+        sendKeyToElement(registerUserElements.lastNameText, lastName);
+        sendKeyToElement(registerUserElements.companyNameText, companyName);
+        sendKeyToElement(registerUserElements.addressText, address);
+        sendKeyToElement(registerUserElements.address2Text, address2);
         selectCountry(registerUserElements.countryDrop);
-        sendKeyToElement(registerUserElements.stateText, userData.get("state"));
-        sendKeyToElement(registerUserElements.cityText, userData.get("city"));
-        sendKeyToElement(registerUserElements.zipcodeText, userData.get("zipCode"));
-        sendKeyToElement(registerUserElements.mobileNumberText, userData.get("mobile"));
+        sendKeyToElement(registerUserElements.stateText, state);
+        sendKeyToElement(registerUserElements.cityText, city);
+        sendKeyToElement(registerUserElements.zipcodeText, zipCode);
+        sendKeyToElement(registerUserElements.mobileNumberText, mobile);
         scrollTo(registerUserElements.createAccountButton);
 
-        return userData;
+
     }
 
     public void submitAccountCreation() {
@@ -130,8 +121,8 @@ public class RegisterUserPage_DS extends PageBase {
         return isElementVisible(registerUserElements.deleteAccountVerifyText, 1);
     }
 
-    public String getLoggedInUsername() {
-        return registerUserElements.userNameVerifyText.getText();
+    public boolean isLoggedVisible() {
+        return isElementVisible(registerUserElements.userNameVerifyText, 1);
     }
 
     public String getPageTitle() {
